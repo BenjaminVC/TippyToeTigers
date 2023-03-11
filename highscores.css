@@ -1,0 +1,33 @@
+.high-score-table {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.high-score-table h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.high-score-table table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.high-score-table th {
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+}
+
+.high-score-table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
