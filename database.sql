@@ -1,40 +1,40 @@
 CREATE TABLE user_info (
-    user_id INTEGER PRIMARY KEY,
+    username Text NOT NULL PRIMARY KEY,
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
     email TEXT NOT NULL
 );
 
-INSERT INTO user_info (user_id, first_name, last_name, email) VALUES 
-    (1, 'John', 'Doe', 'john.doe@example.com'),
-    (2, 'Jane', 'Doe', 'jane.doe@example.com'),
-    (3, 'Bob', 'Smith', 'bob.smith@example.com'),
-    (4, 'Charles', 'Biffin', 'charles.biffin@example.com'),
-    (5, 'Ben', 'Van Cise', 'ben.vancise@example.com'),
-    (6, 'Jonida', 'Durbaku', 'jonida.durbaku@example.com'),
-    (7, 'Ann', 'Williams', 'ann.williams@example.com'),
-    (8, 'James', 'Blunt', 'james.blunt@example.com'),
-    (9, 'Sam', 'Smith', 'sam.smith@example.com'),
-    (10, 'admin', 'admin', 'admin.admin@example.com');
+INSERT INTO user_info (username, first_name, last_name, email) VALUES 
+    ('johndoe', 'John', 'Doe', 'john.doe@example.com'),
+    ('janedoe', 'Jane', 'Doe', 'jane.doe@example.com'),
+    ('bobsmith', 'Bob', 'Smith', 'bob.smith@example.com'),
+    ('charlesbiffin', 'Charles', 'Biffin', 'charles.biffin@example.com'),
+    ('benvancise', 'Ben', 'Van Cise', 'ben.vancise@example.com'),
+    ('jonidadurbaku', 'Jonida', 'Durbaku', 'jonida.durbaku@example.com'),
+    ('annwilliams',  'Ann', 'Williams', 'ann.williams@example.com'),
+    ('jamesblunt', 'James', 'Blunt', 'james.blunt@example.com'),
+    ('samsmith', 'Sam', 'Smith', 'sam.smith@example.com'),
+    ('admin','admin', 'admin', 'admin.admin@example.com');
 
 CREATE TABLE user_account (
     account_id INTEGER PRIMARY KEY,
-    user_id INTEGER NOT NULL,
+    username Text NOT NULL,
     user_password TEXT NOT NULL,
-    FOREIGN KEY(user_id) REFERENCES user_info(user_id)
+    FOREIGN KEY(username) REFERENCES user_info(username)
 );
 
-INSERT INTO user_account (account_id, user_id, user_password) VALUES 
-    (1, 1, 'password123'),
-    (2, 2, 'password123'),
-    (3, 3, 'password123'),
-    (4, 4, 'password123'),
-    (5, 5, 'password123'),
-    (6, 6, 'password123'),
-    (7, 7, 'password123'),
-    (8, 8, 'password123'),
-    (9, 9, 'password123'),
-    (10, 10, 'password123');
+INSERT INTO user_account (account_id, username, user_password) VALUES 
+    (1, 'johndoe', 'password123'),
+    (2, 'janedoe', 'password123'),
+    (3, 'bobsmith', 'password123'),
+    (4, 'charlesbiffin', 'password123'),
+    (5, 'benvancise', 'password123'),
+    (6, 'jonidadurbaku', 'password123'),
+    (7, 'annwilliams', 'password123'),
+    (8, 'jamesblunt', 'password123'),
+    (9, 'samsmith', 'password123'),
+    (10, 'admin', 'password123');
 
 CREATE TABLE games (
   game_id INTEGER PRIMARY KEY,
@@ -52,23 +52,23 @@ INSERT INTO categories (category_id, category_name) VALUES (1, 'Fruits'), (2, 'A
 
 CREATE TABLE rounds (
   round_id INTEGER PRIMARY KEY,
-  user_id INTEGER,
-  game_id INTEGER,
+  username TEXT NOT NULL,
+  game_id INTEGER NOT NULL,
   category_id INTEGER,
-  score INTEGER,
-  FOREIGN KEY (user_id) REFERENCES user_account(user_id),
+  score INTEGER NOT NULL,
+  FOREIGN KEY (username) REFERENCES user_account(username),
   FOREIGN KEY (game_id) REFERENCES games(game_id),
   FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
 
-INSERT INTO rounds (user_id, game_id, category_id, score) VALUES 
-    (1, 1, 2, 100),
-    (3, 1, 2, 90),
-    (2, 2, 1, 75),
-    (4, 3, 3, 60),
-    (5, 2, 2, 80), 
-    (1, 3, 1, 85), 
-    (2, 1, 1, 70),
-    (3, 3, 2, 95),
-    (4, 2, 3, 50),
-    (5, 1, 1, 65);
+INSERT INTO rounds (username, game_id, category_id, score) VALUES 
+    ('johndoe', 1, 2, 100),
+    ('bobsmith', 1, 2, 90),
+    ('janedoe', 2, NULL, 75),
+    ('charlesbiffin', 2, NULL, 60),
+    ('benvancise', 2, NULL, 80), 
+    ('johndoe', 1, 1, 85), 
+    ('janedoe', 1, 2, 70),
+    ('bobsmith', 2, NULL, 95),
+    ('charlesbiffin', 2, NULL, 50),
+    ('benvancise', 1, 1, 65);
