@@ -1,24 +1,59 @@
 <?php
-// start the session
+// Start session
 session_start();
 
-// check if the user has submitted the form
-if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirm_password'])) {
+// Connect to database
+$db = new PDO('sqlite:gameDB.db');
+// Handle signup request
+if (isset($_POST['signup'])) {
+    // Hash password
+    $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    // get the username and password from the form
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
+    // Insert user info into database
+    $stmt = $db->prepare('INSERT INTO user_info (username, first_name, last_name, email) VALUES (?, ?, ?, ?)');
+    $stmt->execute([$_POST['username'], $_POST['first_name'], $_POST['last_name'], $_POST['email']]);
 
-    // TODO: validate the user's input
+    // Insert user account into database
+    $stmt = $db->prepare('INSERT INTO user_account (username, user_password) VALUES (?, ?)');
+    $stmt->execute([$_POST['username'], $_POST['password']]);
 
-    // TODO: check if the username already exists in the database
+    // Update user account password in database
+    // $stmt = $db->prepare('UPDATE user_account SET user_password = ? WHERE username = ?');
+    // $stmt->execute([$hashed_password, $_POST['username']]);
 
-    // TODO: add the user to the database
-
-    // redirect the user to the homepage
-    header('Location: homepage.php');
+    // Redirect to login page
+    header('Location: login.php');
     exit();
 }
-
 ?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login/Signup</title>
+</head>
+
+<body>
+    <h1>Signup</h1>
+    <form method="post">
+        <label>Username:</label>
+        <input type="text" name="username" required>
+        <br>
+        <label>First Name:</label>
+        <input type="text" name="first_name" required>
+        <br>
+        <label>Last Name:</label>
+        <input type="text" name="last_name" required>
+        <br>
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        <br>
+        <label>Password:</label>
+        <input type="password" name="password" required>
+        <br>
+        <button type="submit" name="signup">Signup</button>
+    </form>
+</body>
+
+</html>
