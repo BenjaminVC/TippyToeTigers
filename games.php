@@ -37,7 +37,7 @@ $hangman_scores = $stmt_hangman->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
         <br>
-        <h2>Snake High Scores</h2>
+        <h2 class="center">Snake High Scores</h2>
     <table>
         <tr>
             <th>Username</th>
@@ -51,8 +51,10 @@ $hangman_scores = $stmt_hangman->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
     </table>
 
+    <div class="center" >
     <button><a href="hangman.php">Hangman</a></button>
-    <h2>Hangman High Scores</h2>
+    <h2 class="center">Hangman High Scores</h2>
+    </div>
     <table>
         <tr>
             <th>Username</th>
