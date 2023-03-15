@@ -23,7 +23,7 @@ $hangman_scores = $stmt_hangman->fetchAll(PDO::FETCH_ASSOC);
 <html>
     <head>
         <title>Welcome</title>
-        <link rel="stylesheet" href="/assets/games.css">
+        <link rel="stylesheet" href="assets/games.css">
     </head>
 
     <body>

@@ -1,42 +1,40 @@
-table,
-th,
-td {
-  border: 2px solid black;
-  border-collapse: collapse;
+header {
+	background-color: #4CAF50;
+	padding: 20px;
+	color: white;
+	text-align: center;
+	border-radius: 10px;
+	box-sizing: border-box;
+	border: 2px solid #4CAF50;
 }
 
-th {
-  background-color: blue;
-  color: white;
+.buttons {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 50px;
 }
 
-#button, #submit {
-  float: right;
+.signup, .login {
+	display: block;
+	margin: 10px;
+	padding: 10px 20px;
+	border-radius: 4px;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	font-size: 20px;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.signup {
+	background-color: #008081;
 }
 
-ul li {
-  display: table-row;
+.login {
+	background-color: #4CAF50;
 }
 
-ul li a {
-  display: table-cell;
-  padding: 10px;
-  text-align: center;
-  border: 1px solid #bfbfbf;
-  background-color: #f1f1f1;
-  width: 35%;
-  color: black;
-  text-decoration: none;
-}
-
-ul li a.active {
-  background-color: #008081;
-  color: white;
-  text-decoration: none;
+.signup:hover, .login:hover {
+	background-color: #45a049;
+	box-shadow: 0 0 10px 5px rgba(68, 219, 165, 0.5);
 }
