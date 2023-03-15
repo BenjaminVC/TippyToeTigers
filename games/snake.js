@@ -13,6 +13,7 @@ class Snake {
       this.foodX = null;
       this.foodY = null;
       this.gameOver = false;
+      this.score = 0;
      
     }
   
@@ -27,7 +28,9 @@ class Snake {
     }
   
     update() {
-        console.log("hi");
+      
+      document.getElementById('score').innerHTML = "Score: " + this.score;
+        console.log(this.score);
       if (this.gameOver) {
         return;
       }
@@ -40,6 +43,7 @@ class Snake {
   
       if (this.snakeX == this.foodX && this.snakeY == this.foodY) {
         this.snakeBody.push([this.foodX, this.foodY]);
+        this.score++;
         this.placeFood();
       }
   
@@ -65,13 +69,17 @@ class Snake {
           || this.snakeY < 0
           || this.snakeY > this.totalRow * this.blockSize) {
         this.gameOver = true;
-        alert("YOU ARE A LOSER!");
+        document.getElementById('logo').innerHTML = "TIPPYTOETIGERS STATUS = 😿";
+        this.context.font = "18px Verdana";
+        this.context.strokeText("YOU ARE A LOSER!\nPress 'R' key to restart NOW", 10, 200, 500);
       }
   
       for (let i = 0; i < this.snakeBody.length; i++) {
         if (this.snakeX == this.snakeBody[i][0] && this.snakeY == this.snakeBody[i][1]) {
           this.gameOver = true;
-          alert("YOU ARE A CANNIBAL, AND A LOSER!");
+          document.getElementById('logo').innerHTML = "TIPPYTOETIGERS STATUS = 😿";
+          this.context.font = "12px Verdana";
+          this.context.strokeText("YOU ATE YOURSELF AND YOU ARE A LOSER!\nPress 'R' key to restart NOW", 0, 200, 500);
         }
       }
     }
@@ -92,6 +100,9 @@ class Snake {
     else if (e.code == "ArrowRight" && this.speedX != -1) {
         this.speedX = 1;
         this.speedY = 0;
+    }
+    else if(e.code == "KeyR") {
+      location.reload();
     }
     }
 
