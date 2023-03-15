@@ -15,3 +15,21 @@
     animation-duration: 4s;
     animation-iteration-count: infinite;
   } 
+
+  table {
+    border-collapse: collapse;
+    width: 50%;
+    margin: 0 auto;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

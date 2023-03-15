@@ -1,5 +1,24 @@
 <?php
+// Start session
 session_start();
+
+// Connect to database
+try {
+    $db = new PDO('sqlite:gameDB.db');
+} catch(PDOException $e) {
+    die('Connection failed: ' . $e->getMessage());
+}
+
+// Query high scores for Snake game
+$stmt_snake = $db->prepare('SELECT username, SUM(score) AS total_score FROM rounds WHERE game_id = 2 GROUP BY username ORDER BY total_score DESC');
+$stmt_snake->execute();
+$snake_scores = $stmt_snake->fetchAll(PDO::FETCH_ASSOC);
+
+// Query high scores for Hangman game
+$stmt_hangman = $db->prepare('SELECT username, SUM(score) AS total_score FROM rounds WHERE game_id = 1 GROUP BY username ORDER BY total_score DESC');
+$stmt_hangman->execute();
+$hangman_scores = $stmt_hangman->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <html>
     <head>
@@ -14,7 +33,37 @@ session_start();
             <h2>😼 Choose your game!</h2>
     	
     	    <button><a href="snake.php">Snake</a></button>
-    	    <button><a href="hangman.php">Hangman</a></button>
+    	    
         </div>
+
+
+        <h2>Snake High Scores</h2>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Total Score</th>
+        </tr>
+        <?php foreach ($snake_scores as $score): ?>
+        <tr>
+            <td><?php echo $score['username']; ?></td>
+            <td><?php echo $score['total_score']; ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+
+    <button><a href="hangman.php">Hangman</a></button>
+    <h2>Hangman High Scores</h2>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Total Score</th>
+        </tr>
+        <?php foreach ($hangman_scores as $score): ?>
+        <tr>
+            <td><?php echo $score['username']; ?></td>
+            <td><?php echo $score['total_score']; ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
     </body>
 </html>
