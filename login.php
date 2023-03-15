@@ -44,6 +44,7 @@ if (isset($_POST['login'])) {
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="login.css">
     <title>Login</title>
 </head>
 <body>
@@ -52,7 +53,7 @@ if (isset($_POST['login'])) {
         <p><?php echo $error; ?></p>
     <?php endif; ?>
     
-    <h2>Login</h2>
+    <h1>Login</h1>
     <form method="post">
         <label>Username:</label>
         <input type="text" name="username" required>
@@ -61,6 +62,7 @@ if (isset($_POST['login'])) {
         <input type="password" name="password" required>
         <br>
         <button type="submit" name="login">Login</button>
+        <button type="submit" name="signup" style="float: right">SignUp</button>
     </form>
 </body>
 </html>
