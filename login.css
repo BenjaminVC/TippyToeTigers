@@ -46,12 +46,6 @@ border-radius: 4px;
 cursor: pointer;
 }
 
-/* Style for the form button when hovering */
-button {
-background-color: #45a049;
-}
-
-
 
 /* Style for error message */
 p {

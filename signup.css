@@ -1,9 +1,16 @@
 body {
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
     text-align: center;
+    font-family: Arial;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 form {
@@ -31,7 +38,8 @@ input[type="password"] {
     box-sizing: border-box;
 }
 
-button[type="submit"] {
+.signup, .login {
+    width: 150px;
     margin-top: 10px;
     padding: 10px 20px;
     font-size: 18px;
@@ -40,4 +48,9 @@ button[type="submit"] {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.signup:hover, .login:hover {
+	background-color: #45a049;
+	box-shadow: 0 0 10px 5px rgba(68, 219, 165, 0.5);
 }

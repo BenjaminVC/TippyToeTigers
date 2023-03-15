@@ -52,9 +52,11 @@ if (isset($_POST['signup'])) {
         <br>
         <label>Password:</label>
         <input type="password" name="password" required>
-        <br>
-        <button type="submit" name="signup">Signup</button>
-        <a href="login.php"><button type="button" style="float: right">Login</button></a>
+        <br>   
+        <div class="button-container">
+        <button type="submit" name="signup" class="signup">Signup</button>
+        <a href="login.php"><button type="button" class="login">Login</button></a>
+        </div>
     </form>
 </body>
 
