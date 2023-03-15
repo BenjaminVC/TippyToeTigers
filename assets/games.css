@@ -7,8 +7,8 @@
   }
   
   /* The element to apply the animation to */
-  div {
-    width: 250px;
+  #logo {
+    width: 50%;
     height: 35px;
     background-color: orange;
     animation-name: example;
@@ -32,4 +32,10 @@ th {
 }
 tr:nth-child(even) {
     background-color: #f2f2f2;
+}
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center; 
 }

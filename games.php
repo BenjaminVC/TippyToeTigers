@@ -29,8 +29,8 @@ $hangman_scores = $stmt_hangman->fetchAll(PDO::FETCH_ASSOC);
     <body>
         <?php  echo 'Account: <strong>' . $_SESSION['username'] . 
         '</strong> | <a href="logout.php">Logout</a>';?>
-    	<div>
-            <h2>😼 Choose your game!</h2>
+    	<div class="center" id="logo">
+            <h2 class="center">😼 Choose your game!</h2>
     	
     	    <button><a href="snake.php">Snake</a></button>
     	    
