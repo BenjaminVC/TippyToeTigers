@@ -2,7 +2,7 @@ CREATE TABLE user_info (
     username Text NOT NULL PRIMARY KEY,
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
-    email TEXT NOT NULL
+    email TEXT NOT NULL UNIQUE
 );
 
 INSERT INTO user_info (username, first_name, last_name, email) VALUES 
