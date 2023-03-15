@@ -13,7 +13,9 @@ session_start();
 </head>
 <body>
 <?php  echo 'Account: <strong>' . $_SESSION['username'] . 
-        '</strong> | <a href="logout.php">Logout</a>';?>
+        '</strong> 
+		| <button><a href="logout.php">Logout</a></button> 
+		| <button><a href="games.php">Back</a></button>';?>
 	<div class="logo" id="logo">TIPPYTOETIGERS STATUS = 😼</div>
 	<span id="game-message" style="color:red"></span>
 	<br /><br />
