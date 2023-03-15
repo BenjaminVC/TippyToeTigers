@@ -23,7 +23,7 @@ session_start();
     <div id="options-container"></div>
     <div id="letter-container" class="letter-container hide"></div>
     <div id="user-input-section"></div>
-    <div id="score-container">Score: <span id="score">0</span></div>
+    <div id="score-container">Score: <span id="score-text"></span></div>
     <canvas id="canvas"></canvas>
     <div id="new-game-container" class="new-game-popup hide">
       <div id="result-text"></div>

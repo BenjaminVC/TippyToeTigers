@@ -6,6 +6,7 @@ const newGameContainer = document.getElementById("new-game-container");
 const newGameButton = document.getElementById("new-game-button");
 const canvas = document.getElementById("canvas");
 const resultText = document.getElementById("result-text");
+const scoreText = document.getElementById("score-text");
 
 //Options values for buttons
 let options = {
@@ -31,8 +32,11 @@ let options = {
 //count
 let winCount = 0;
 let count = 0;
-
+let score = 0;
+let wordsPlayed = 0; 
 let chosenWord = "";
+//will keep track which category the user chose: fruit, animal, or country
+let chosenOption = "";
 
 //Display option buttons
 const displayOptions = () => {
@@ -71,6 +75,17 @@ const generateWord = (optionValue) => {
     button.disabled = true;
   });
 
+      // calculate and display the score
+      if (chosenOption === "fruits") {
+        score += winCount;
+      } else if (chosenOption === "animals") {
+        score += winCount * 2;
+      } else if (chosenOption === "countries") {
+        score += winCount * 3;
+      }
+      scoreText.innerText = `Score: ${score}`;
+   
+
   //initially hide letters, clear previous word
   letterContainer.classList.remove("hide");
   userInputSection.innerText = "";
@@ -79,18 +94,25 @@ const generateWord = (optionValue) => {
   //choose random word
   chosenWord = optionArray[Math.floor(Math.random() * optionArray.length)];
   chosenWord = chosenWord.toUpperCase();
-
+  chosenOption = optionValue;
   //replace every letter with span containing dash
   let displayItem = chosenWord.replace(/./g, '<span class="dashes">_</span>');
 
   //Display each element as span
   userInputSection.innerHTML = displayItem;
+
+
 };
+
+
 
 //Initial Function (Called when page loads/user presses new game)
 const initializer = () => {
   winCount = 0;
   count = 0;
+  score =0;
+  chosenWord= "";
+  chosenOption ="";
 
   //Initially erase all content and hide letteres and new game button
   userInputSection.innerHTML = "";
