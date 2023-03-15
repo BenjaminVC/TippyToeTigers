@@ -44,7 +44,7 @@ if (isset($_POST['login'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="login.css">
+    <link rel="stylesheet" type="text/css" href="assets/login.css">
     <title>Login</title>
 </head>
 <body>

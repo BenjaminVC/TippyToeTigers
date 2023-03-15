@@ -31,7 +31,7 @@ if (isset($_POST['signup'])) {
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="signup.css">
+    <link rel="stylesheet" type="text/css" href="assets/signup.css">
     <title>Login/Signup</title>
 </head>
 
