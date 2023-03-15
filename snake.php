@@ -8,7 +8,7 @@ session_start();
 <meta name="viewport",
 	content="width=device-width, initial-scale=1.0">
 <title>TIPPYTOETIGERS SNAKE</title>
-<link rel="stylesheet" href="/assets/snake.css" />
+<link rel="stylesheet" href="assets/snake.css" />
 <script type="text/javascript" src="/games/snake.js"></script>
 </head>
 <body>

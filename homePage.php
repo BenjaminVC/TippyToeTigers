@@ -6,8 +6,8 @@ session_start();
 <html>
 <head>
 	<title>TippyToeTigers Landing Site</title>
-	<link rel="stylesheet" href="homePage.css">
-	<link rel="stylesheet" href="login.css">
+	<link rel="stylesheet" href="assets/homePage.css">
+	<link rel="stylesheet" href="assets/login.css">
 </head>
 <body>
 	<header>
