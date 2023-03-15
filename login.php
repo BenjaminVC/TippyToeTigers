@@ -16,16 +16,17 @@ if (isset($_POST['login'])) {
     $stmt = $db->prepare('SELECT * FROM user_account WHERE username = ?');
     $stmt->execute([$_POST['username']]);
     $user_account = $stmt->fetch(PDO::FETCH_ASSOC);
-
+    
     // Verify password
-    if ($user_account && password_verify($_POST['password'], $user_account['user_password'])) {
+    if ($user_account && ($_POST['password']) == $user_account['user_password']) {
+        echo "we verified a user";
         // Get user info
         $stmt = $db->prepare('SELECT * FROM user_info WHERE username = ?');
         $stmt->execute([$_POST['username']]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // Set session variables
-        $_SESSION['username'] = $user['username'];
+        $_SESSION['username'] = $user_account['username'];
         $_SESSION['first_name'] = $user['first_name'];
         $_SESSION['last_name'] = $user['last_name'];
         $_SESSION['email'] = $user['email'];
@@ -35,9 +36,10 @@ if (isset($_POST['login'])) {
         exit();
     } else {
         // Display error message
-        $error = 'Invalid username or password.';
+        $error = "Invalid username or password";
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +48,7 @@ if (isset($_POST['login'])) {
     <title>Login</title>
 </head>
 <body>
+
     <?php if (isset($error)): ?>
         <p><?php echo $error; ?></p>
     <?php endif; ?>
