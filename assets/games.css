@@ -1,16 +1,16 @@
 /* The animation code */
 @keyframes example {
-    0%   {background-color: orange;}
-    25%  {background-color: yellow;}
-    50% {background-color: orange;}
-    75% {background-color: yellow;}
+    0%   {background-color: #ff822d;}
+    25%  {background-color: #ffb02e;}
+    50% {background-color: #ff822d;}
+    75% {background-color: #ffb02e;}
   }
   
   /* The element to apply the animation to */
   #logo {
     width: 50%;
     height: 35px;
-    background-color: orange;
+    background-color: #ff822d;
     animation-name: example;
     animation-duration: 4s;
     animation-iteration-count: infinite;
