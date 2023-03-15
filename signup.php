@@ -54,6 +54,7 @@ if (isset($_POST['signup'])) {
         <input type="password" name="password" required>
         <br>
         <button type="submit" name="signup">Signup</button>
+        <a href="login.php"><button type="button" style="float: right">Login</button></a>
     </form>
 </body>
 

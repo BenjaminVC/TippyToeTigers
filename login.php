@@ -62,7 +62,7 @@ if (isset($_POST['login'])) {
         <input type="password" name="password" required>
         <br>
         <button type="submit" name="login">Login</button>
-        <button type="submit" name="signup" style="float: right">SignUp</button>
+        <a href="signup.php"><button type="button" style="float: right">SignUp</button></a>
     </form>
 </body>
 </html>
