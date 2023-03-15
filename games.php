@@ -8,7 +8,8 @@ session_start();
     </head>
 
     <body>
-        <p>Account: <?php echo $_SESSION['username']; ?> | logout</p>
+        <?php  echo 'Account: <strong>' . $_SESSION['username'] . 
+        '</strong> | <a href="logout.php">Logout</a>';?>
     	<div>
             <h2>😼 Choose your game!</h2>
     	

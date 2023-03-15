@@ -39,7 +39,6 @@ if (isset($_POST['login'])) {
         $error = "Invalid username or password";
     }
 }
-
 ?>
 
 <!DOCTYPE html>
