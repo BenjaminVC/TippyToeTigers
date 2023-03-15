@@ -36,7 +36,7 @@ $hangman_scores = $stmt_hangman->fetchAll(PDO::FETCH_ASSOC);
     	    
         </div>
 
-
+        <br>
         <h2>Snake High Scores</h2>
     <table>
         <tr>
