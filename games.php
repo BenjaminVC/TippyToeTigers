@@ -32,10 +32,10 @@ $hangman_scores = $stmt_hangman->fetchAll(PDO::FETCH_ASSOC);
     	<div class="center" id="logo">
             <h2 class="center">😼 Choose your game!</h2>
             <br>
-    	    <button><a href="snake.php">Snake</a></button> 
+    	    <button type="button" class="snake-button"><a href="snake.php">Snake</a></button>  
         </div>
 
-        <br><br><br>
+        <br><br><br><br>
         <h2 class="center">Snake High Scores</h2>
     <table>
         <tr>
@@ -51,8 +51,8 @@ $hangman_scores = $stmt_hangman->fetchAll(PDO::FETCH_ASSOC);
     </table>
 
     <div class="center" >
-        <br>
-    <button><a href="hangman.php">Hangman</a></button>
+        <br><br><br>
+        <button type="button" class="hangman-button"><a href="hangman.php">Hangman</a></button>
     <br><br>
     <h2 class="center">Hangman High Scores</h2>
     </div>

@@ -100,6 +100,7 @@ canvas {
 
 .hide {
   display: none;
+  background-color: #7964e0;
 }
 
 #result-text h2 {
@@ -114,6 +115,7 @@ canvas {
 
 #result-text span {
   font-weight: 600;
+  font-size: large;
 }
 
 #new-game-button {
@@ -127,8 +129,12 @@ canvas {
 
 .win-msg {
   color: #39d78d;
+  background-color: #7964e0;
+  border-radius: 10px;
 }
 
 .lose-msg {
   color: #fe5152;
+  background-color: #000000;
+  border-radius: 10px;
 }

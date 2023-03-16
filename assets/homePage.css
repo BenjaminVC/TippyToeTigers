@@ -28,10 +28,12 @@ header {
 
 .signup {
 	background-color: #008081;
+	font-family: Arial;
 }
 
 .login {
 	background-color: #4CAF50;
+	font-family: Arial;
 }
 
 .signup:hover, .login:hover {

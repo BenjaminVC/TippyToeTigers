@@ -31,8 +31,11 @@ session_start();
     </div>
   </div>
   <script src="games/Hangman.js"></script>
+  <script>
+    // Initialize the game with a new word
+    var game = new HangmanGame();
+    game.newGame();
+  </script>
 </body>
 
 </html>
-
-

@@ -48,6 +48,37 @@ const displayOptions = () => {
   optionsContainer.appendChild(buttonCon);
 };
 
+//this is to save the round info
+function saveRound(round_id, username, game_id, category_id, score) {
+  // Create a new XMLHttpRequest object
+  const xhr = new XMLHttpRequest();
+
+  // Define the callback function that will be called when the request is complete
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      console.log("Round saved successfully.");
+    } else {
+      console.error("Error saving round:", xhr.statusText);
+    }
+  };
+
+  // Open a new HTTP POST request
+  xhr.open("POST", "hangman.php");
+
+  // Set the Content-Type header to indicate that the data is in JSON format
+  xhr.setRequestHeader("Content-Type", "application/json");
+
+  // Send the data as a JSON string in the request body
+  xhr.send(JSON.stringify({
+    round_id: round_id,
+    username: username,
+    game_id: game_id,
+    category_id: category_id,
+    score: score
+  }));
+}
+
+
 //Block all the Buttons
 const blocker = () => {
   let optionsButtons = document.querySelectorAll(".options");
@@ -66,6 +97,17 @@ const blocker = () => {
 
 //Word Generator
 const generateWord = (optionValue) => {
+
+  // Add this code inside the `generateWord()` function, after the line that sets the `chosenOption` variable
+const round_id = new Date().getTime(); // Generate a unique ID for the round
+const username = "JohnDoe"; // Replace with the actual username of the player
+const game_id = 1; // Replace with the actual ID of the Hangman game
+const category_id = Object.keys(options).indexOf(chosenOption) + 1; // Determine the category ID based on the chosen option
+const round_score = winCount; // The score for this round is equal to the number of correct guesses
+
+saveRound(round_id, username, game_id, category_id, round_score);
+
+
   let optionsButtons = document.querySelectorAll(".options");
   //If optionValur matches the button innerText then highlight the button
   optionsButtons.forEach((button) => {
