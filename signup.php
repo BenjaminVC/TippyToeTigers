@@ -9,6 +9,17 @@ if (isset($_POST['signup'])) {
     // Hash password
     $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
+      // Check if username and email already exist
+      $stmt = $db->prepare('SELECT COUNT(*) FROM user_info WHERE username = ? OR email = ?');
+      $stmt->execute([$_POST['username'], $_POST['email']]);
+      $count = $stmt->fetchColumn();
+  
+      if ($count > 0) {
+          // Username or email already exist, redirect to error page
+          echo "<p>Username or email already exists. Please choose a different one.</p>";
+          exit();
+      }
+
     // Insert user info into database
     $stmt = $db->prepare('INSERT INTO user_info (username, first_name, last_name, email) VALUES (?, ?, ?, ?)');
     $stmt->execute([$_POST['username'], $_POST['first_name'], $_POST['last_name'], $_POST['email']]);
@@ -16,10 +27,6 @@ if (isset($_POST['signup'])) {
     // Insert user account into database
     $stmt = $db->prepare('INSERT INTO user_account (username, user_password) VALUES (?, ?)');
     $stmt->execute([$_POST['username'], $_POST['password']]);
-
-    // Update user account password in database
-    // $stmt = $db->prepare('UPDATE user_account SET user_password = ? WHERE username = ?');
-    // $stmt->execute([$hashed_password, $_POST['username']]);
 
     // Redirect to login page
     header('Location: login.php');
