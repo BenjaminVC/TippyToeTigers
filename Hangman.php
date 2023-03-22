@@ -1,8 +1,16 @@
 <?php
-session_start();
-
 // Check if this current request is a POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  session_start();
+
+  // $json_response = json_encode($_POST);
+  // header('Content-Type: application/json');
+
+  // echo $json_response;
+  // // var_dump($_POST);
+
+  // exit();
+  
   //var_dump($_POST);
   // $json_response = json_encode($_POST);
 
@@ -12,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // exit();
   // Unpack the values that I expect from the POST request (do this inside a conditional)
   $round_id = isset($_POST['round_id']) ? $_POST['round_id'] : null;
-  $username = isset($_SESSION['username']) ? $_SESSION['username'] : null;
+  $username = isset($_SESSION['username']) ? strval($_SESSION['username']) : null;
   $game_id = isset($_POST['game_id']) ? $_POST['game_id'] : null;
   $category_id = isset($_POST['category_id']) ? $_POST['category_id'] : null;
   $score = isset($_POST['score']) ? $_POST['score'] : null;
@@ -56,12 +64,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   $stmt = $db->prepare("INSERT INTO rounds (round_id, username, game_id, category_id, score) VALUES (?, ?, ?, ?, ?)");
-  $stmt->bindValue(1, $round_id, SQLITE3_INTEGER);
-  $stmt->bindValue(2, $username, SQLITE3_TEXT);
-  $stmt->bindValue(3, $game_id, SQLITE3_INTEGER);
-  $stmt->bindValue(4, $category_id, SQLITE3_INTEGER);
-  $stmt->bindValue(5, $score, SQLITE3_INTEGER);
-  $stmt->execute();
+  // $stmt->bindValue(1, $round_id, SQLITE3_INTEGER);
+  // $stmt->bindValue(2, $username, SQLITE3_TEXT);
+  // $stmt->bindValue(3, $game_id, SQLITE3_INTEGER);
+  // $stmt->bindValue(4, $category_id, SQLITE3_INTEGER);
+  // $stmt->bindValue(5, $score, SQLITE3_INTEGER);
+  $stmt->execute([$round_id, $username, $game_id, $category_id, $score]);
+
 
   // JSON serializeing a success response
   $response = array('status' => 'success');
@@ -75,7 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   exit();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -10,7 +10,8 @@ const scoreText = document.getElementById("score-text");
 
 //Options values for buttons
 let options = {
-  fruits: ["Apple", "Blueberry", "Orange", "Pineapple", "Kiwi", "Watermelon"],
+  //fruits: ["Apple", "Blueberry", "Orange", "Pineapple", "Kiwi", "Watermelon"],
+  fruits: ["Apple"],
   animals: ["Hedgehog", "Elephant", "Squirrel", "Panther", "Racoon", "Zebra"],
   countries: ["India", "Hungary", "Albania", "Switzerland", "Zimbabwe", "Azerbaijan"],
 };
@@ -39,20 +40,21 @@ function saveRound(round_id, username, game_id, category_id, score) {
   // Create a new XMLHttpRequest object
   const xhr = new XMLHttpRequest();
 
+  // Open a new HTTP POST request
+  xhr.open("POST", "hangman.php", true);
+
+  // Set the Content-Type header to indicate that the data is in JSON format
+  // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
   // Define the callback function that will be called when the request is complete
-  xhr.onload = function () {
-    if (xhr.status === 200) {
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       console.log("Round saved successfully.");
     } else {
       console.error("Error saving round:", xhr.statusText);
     }
   };
 
-  // Open a new HTTP POST request
-  xhr.open("POST", "hangman.php");
-
-  // Set the Content-Type header to indicate that the data is in JSON format
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   // Encode the data as URL-encoded form data
   const formData = new FormData();
   formData.append('round_id', round_id);
