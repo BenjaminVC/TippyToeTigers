@@ -10,8 +10,9 @@ const scoreText = document.getElementById("score-text");
 
 //Options values for buttons
 let options = {
-  //fruits: ["Apple", "Blueberry", "Orange", "Pineapple", "Kiwi", "Watermelon"],
-  fruits: ["Apple"],
+  //for testing
+  // fruits: ["Apple"],
+  fruits: ["Apple", "Blueberry", "Orange", "Pineapple", "Kiwi", "Watermelon"],
   animals: ["Hedgehog", "Elephant", "Squirrel", "Panther", "Racoon", "Zebra"],
   countries: ["India", "Hungary", "Albania", "Switzerland", "Zimbabwe", "Azerbaijan"],
 };
