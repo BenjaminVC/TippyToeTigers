@@ -13,10 +13,15 @@ class Snake {
     this.foodX = null;
     this.foodY = null;
     this.gameOver = false;
-    this.score = 0;
+    this.score = 1;
+    this.round_id = null;
+    this.game_id = 2;
+    this.category_id = 2;
+    this.username = "JohnDoe";
   }
 
   start() {
+    this.round_id = new Date().getTime();
     this.board = document.getElementById("board");
     this.board.height = this.totalRow * this.blockSize;
     this.board.width = this.totalCol * this.blockSize;
@@ -42,7 +47,7 @@ class Snake {
 
     if (this.snakeX == this.foodX && this.snakeY == this.foodY) {
       this.snakeBody.push([this.foodX, this.foodY]);
-      this.score++;
+      this.score += 1;
       this.placeFood();
     }
 
@@ -113,15 +118,37 @@ class Snake {
   }
 
   sendScoreToAjax() {
+    // Create a new XMLHttpRequest object
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", './snake.php', true);
-    xhr.setRequestHeader("Content-Type", "application/json");
+
+    // Open a new HTTP POST request
+    xhr.open("POST", "snake.php", true);
+
+    // Set the Content-Type header to indicate that the data is in JSON format
+    // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    // Define the callback function that will be called when the request is complete
     xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        console.log("Score sent successfully!");
-      }
-    };
-    const data = JSON.stringify({ score: this.score });
-    xhr.send(data);
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      console.log("Round saved successfully.");
+    } 
+    else {
+      console.error("Error saving round:", xhr.statusText);
+    }
+  };
+    const round_id = this.round_id;
+    const username = this.username;
+    const game_id = this.game_id;
+    const category_id = this.category_id;
+    const score = this.score;
+  // Encode the data as URL-encoded form data
+    const formData = new FormData();
+    formData.append('round_id', round_id);
+    formData.append('username', username);
+    formData.append('game_id', game_id);
+    formData.append('category_id', category_id);
+    formData.append('score', score);
+    // Send the data as a JSON string in the request body
+    xhr.send(formData);
   }
 }

@@ -1,4 +1,8 @@
 <?php
+session_start();
+?>
+
+<?php
 // Check if this current request is a POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   session_start();
