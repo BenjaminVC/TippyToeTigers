@@ -9,4 +9,5 @@
 <h5> 5. Fill in the following information: <br>
     <li> ports: 80 </li>
     <li> Host path: ./TippyToeTigers (or wherever you placed the TippyToeTigers folder)</li>
-    <li> Container path: /var/www/html </li>
+    <li> Container path: /var/www/html </li> <br>
+<h5> 6. Finally, open your browser and enter the following URL: http://localhost/source/homePage.php
