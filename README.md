@@ -8,5 +8,5 @@
 <h5> 4. Next to ttt/php, on the right hand side click Run and then click the drop-down arrow <br> 
 <h5> 5. Fill in the following information: <br>
     <li> ports: 80 </li>
-    <li> Host path: ./TippyToeTigers </li>
+    <li> Host path: ./TippyToeTigers (or wherever you placed the TIPPYTOETIGERS folder)</li>
     <li> Container path: /var/www/html </li>
